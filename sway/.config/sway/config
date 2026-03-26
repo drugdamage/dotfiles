@@ -1,0 +1,215 @@
+# ============================================================
+#  Sway config — Catppuccin Mocha
+#  Monitor names are placeholders — run `swaymsg -t get_outputs`
+#  and replace eDP-1 / HDMI-A-1 with your actual output names
+# ============================================================
+
+### Variables
+set $mod        Mod4
+set $term       kitty
+set $menu       vicinae
+set $left       h
+set $down       j
+set $up         k
+set $right      l
+
+# ── Catppuccin Mocha palette ────────────────────────────────
+set $base       #1e1e2e
+set $mantle     #181825
+set $surface0   #313244
+set $surface1   #45475a
+set $overlay0   #6c7086
+set $text       #cdd6f4
+set $subtext0   #a6adc8
+set $mauve      #cba6f7
+set $blue       #89b4fa
+set $red        #f38ba8
+set $green      #a6e3a1
+set $yellow     #f9e2af
+
+# ── Monitors ────────────────────────────────────────────────
+# Laptop screen — 144Hz, position right
+# Replace eDP-1 with your actual name from `swaymsg -t get_outputs`
+output eDP-1    resolution 1920x1080 refresh_rate 144 position 1920,0 scale 1
+
+# External LG — 60Hz, position left (primary)
+# Replace HDMI-A-1 with your actual name
+output HDMI-A-1 resolution 1920x1080 refresh_rate 60  position 0,0    scale 1
+
+# ── Wallpaper — solid black ──────────────────────────────────
+output * bg #000000 solid_color
+
+# ── Workspace assignment ─────────────────────────────────────
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+
+workspace $ws1 output HDMI-A-1
+workspace $ws2 output HDMI-A-1
+workspace $ws3 output HDMI-A-1
+workspace $ws4 output HDMI-A-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+
+# ── Input ────────────────────────────────────────────────────
+input "type:keyboard" {
+    xkb_layout  us,ru
+    xkb_options grp:alt_shift_toggle
+    repeat_delay 280
+    repeat_rate  50
+}
+
+input "type:touchpad" {
+    dwt              enabled
+    tap              enabled
+    natural_scroll   enabled
+    middle_emulation enabled
+    scroll_factor    0.8
+}
+
+# ── Appearance ───────────────────────────────────────────────
+gaps inner 8
+gaps outer 4
+smart_gaps on
+
+default_border          pixel 2
+default_floating_border pixel 2
+hide_edge_borders       smart
+
+font pango:JetBrainsMono Nerd Font 11
+
+# class                 border    bg       text    indicator  child_border
+client.focused          $mauve    $base    $text   $mauve     $mauve
+client.focused_inactive $surface0 $base    $text   $surface0  $surface0
+client.unfocused        $surface1 $mantle  $overlay0 $surface1 $surface1
+client.urgent           $red      $base    $text   $red       $red
+
+# ── Key bindings ─────────────────────────────────────────────
+
+# Core
+bindsym $mod+Return       exec $term
+bindsym $mod+Space        exec $menu
+bindsym $mod+q            kill
+bindsym $mod+Shift+c      reload
+bindsym $mod+Shift+e      exec swaynag -t warning \
+    -m 'Exit sway?' \
+    -B 'Yes, exit' 'swaymsg exit'
+
+# Focus (vim-style)
+bindsym $mod+$left        focus left
+bindsym $mod+$down        focus down
+bindsym $mod+$up          focus up
+bindsym $mod+$right       focus right
+bindsym $mod+Left         focus left
+bindsym $mod+Down         focus down
+bindsym $mod+Up           focus up
+bindsym $mod+Right        focus right
+
+# Move windows
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left   move left
+bindsym $mod+Shift+Down   move down
+bindsym $mod+Shift+Up     move up
+bindsym $mod+Shift+Right  move right
+
+# Layout
+bindsym $mod+b            splith
+bindsym $mod+v            splitv
+bindsym $mod+s            layout stacking
+bindsym $mod+w            layout tabbed
+bindsym $mod+e            layout toggle split
+bindsym $mod+f            fullscreen toggle
+bindsym $mod+Shift+space  floating toggle
+bindsym $mod+a            focus mode_toggle
+bindsym $mod+Shift+minus  move scratchpad
+bindsym $mod+minus        scratchpad show
+
+# Resize mode
+mode "resize" {
+    bindsym $left  resize shrink width  10px
+    bindsym $down  resize grow   height 10px
+    bindsym $up    resize shrink height 10px
+    bindsym $right resize grow   width  10px
+    bindsym Left   resize shrink width  10px
+    bindsym Down   resize grow   height 10px
+    bindsym Up     resize shrink height 10px
+    bindsym Right  resize grow   width  10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+
+# Screenshot (area → clipboard + file)
+bindsym $mod+Shift+s exec ~/.config/scripts/screenshot.sh
+
+# Lock screen
+bindsym $mod+Shift+l exec swaylock -c 000000
+
+# Media keys
+bindsym XF86AudioRaiseVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && pkill -RTMIN+8 waybar
+bindsym XF86AudioLowerVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && pkill -RTMIN+8 waybar
+bindsym XF86AudioMute         exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -RTMIN+8 waybar
+bindsym XF86AudioPlay         exec playerctl play-pause
+bindsym XF86AudioNext         exec playerctl next
+bindsym XF86AudioPrev         exec playerctl previous
+
+# Brightness
+bindsym XF86MonBrightnessUp   exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# ── Floating rules ───────────────────────────────────────────
+for_window [app_id="pavucontrol"]          floating enable, resize set 600 400
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [title="Picture-in-Picture"]    floating enable, sticky enable
+for_window [app_id="zenity"]               floating enable
+
+# ── Idle & lock ──────────────────────────────────────────────
+exec swayidle -w \
+    timeout 300  'swaylock -c 000000' \
+    timeout 600  'swaymsg "output * dpms off"' \
+    resume       'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 000000'
+
+# ── Autostart ────────────────────────────────────────────────
+exec_always ~/.config/waybar/launch.sh
+exec_always ~/.config/scripts/import-gsettings.sh
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec mako
+exec nm-applet --indicator
+
+# XWayland compatibility (for Steam, Discord, VS Code)
+xwayland enable
+
+bar {
+    swaybar_command waybar
+}

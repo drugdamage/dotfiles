@@ -1,0 +1,56 @@
+# ============================================================
+#  Starship — minimal prompt matching the screenshot
+#  Looks like:  user@host ~/path
+#               > $
+# ============================================================
+
+format = """
+$username$hostname $directory$git_branch$git_status
+$character"""
+
+[username]
+format      = "[$user]($style)"
+style_user  = "bold #cba6f7"
+show_always = true
+
+[hostname]
+format    = "[@$hostname]($style) "
+style     = "#6c7086"
+ssh_only  = false
+trim_at   = "."
+
+[directory]
+format            = "[$path]($style) "
+style             = "#89b4fa"
+truncation_length = 3
+truncate_to_repo  = false
+
+[git_branch]
+format = "[$branch]($style) "
+style  = "#a6e3a1"
+symbol = ""
+
+[git_status]
+format = "[$all_status$ahead_behind]($style) "
+style  = "#f9e2af"
+
+[character]
+success_symbol = "[>](bold #cba6f7) [$](bold #cdd6f4)"
+error_symbol   = "[>](bold #f38ba8) [$](bold #f38ba8)"
+vicmd_symbol   = "[<](bold #a6e3a1) [$](bold #cdd6f4)"
+
+# Disable modules not needed
+[cmd_duration]
+disabled = true
+
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[time]
+disabled = true
