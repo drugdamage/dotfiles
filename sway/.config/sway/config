@@ -7,7 +7,7 @@
 ### Variables
 set $mod        Mod4
 set $term       kitty
-set $menu       vicinae
+set $menu       vicinae toggle
 set $left       h
 set $down       j
 set $up         k
@@ -30,11 +30,11 @@ set $yellow     #f9e2af
 # ── Monitors ────────────────────────────────────────────────
 # Laptop screen — 144Hz, position right
 # Replace eDP-1 with your actual name from `swaymsg -t get_outputs`
-output eDP-1    resolution 1920x1080 refresh_rate 144 position 1920,0 scale 1
+output eDP-1 resolution 1920x1080@144Hz position 0,0 scale 1
 
 # External LG — 60Hz, position left (primary)
 # Replace HDMI-A-1 with your actual name
-output HDMI-A-1 resolution 1920x1080 refresh_rate 60  position 0,0    scale 1
+output HDMI-A-1 resolution 1920x1080@60Hz position 1920,0 scale 1
 
 # ── Wallpaper — solid black ──────────────────────────────────
 output * bg #000000 solid_color
@@ -49,14 +49,14 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 
-workspace $ws1 output HDMI-A-1
-workspace $ws2 output HDMI-A-1
-workspace $ws3 output HDMI-A-1
-workspace $ws4 output HDMI-A-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output HDMI-A-1
+workspace $ws6 output HDMI-A-1
+workspace $ws7 output HDMI-A-1
+workspace $ws8 output HDMI-A-1
 
 # ── Input ────────────────────────────────────────────────────
 input "type:keyboard" {
@@ -172,7 +172,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+s exec ~/.config/scripts/screenshot.sh
 
 # Lock screen
-bindsym $mod+Shift+l exec swaylock -c 000000
+bindsym $mod+Escape exec swaylock -c 000000
 
 # Media keys
 bindsym XF86AudioRaiseVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && pkill -RTMIN+8 waybar
@@ -203,6 +203,7 @@ exec swayidle -w \
 exec_always ~/.config/waybar/launch.sh
 exec_always ~/.config/scripts/import-gsettings.sh
 
+exec vicinae server
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec mako
 exec nm-applet --indicator
