@@ -1,24 +1,14 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 28,
+  "height": 32,
   "spacing": 0,
   "exclusive": true,
 
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode"
-  ],
-
-  "modules-center": [
-    "mpris"
-  ],
-
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["mpris"],
   "modules-right": [
     "network",
-    "cpu",
-    "temperature",
-    "memory",
     "pulseaudio",
     "battery",
     "clock"
@@ -26,79 +16,50 @@
 
   "sway/workspaces": {
     "disable-scroll": true,
-    "all-outputs": false,
     "format": "{name}"
   },
 
-  "sway/mode": {
-    "format": "  {}"
-  },
-
   "mpris": {
-    "format": "{artist} – {title}",
-    "format-paused": "{artist} – {title} [paused]",
-    "player-icons": {
-      "default": "▶",
-      "spotify": ""
-    },
-    "status-icons": {
-      "paused": ""
-    },
-    "max-length": 60,
-    "tooltip": false
-  },
-
-  "cpu": {
-    "format": "CPU {usage}%",
-    "interval": 2,
-    "tooltip": false
-  },
-
-  "temperature": {
-    "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
-    "format": "{temperatureC}°C",
-    "critical-threshold": 85,
-    "interval": 5,
-    "tooltip": false
-  },
-
-  "memory": {
-    "format": "MEM {used:.1f}/{total:.1f}G",
-    "interval": 5,
+    "format": " {artist} – {title}",
+    "format-paused": " {artist} – {title}",
+    "max-length": 50,
     "tooltip": false
   },
 
   "network": {
-    "format-wifi": "{essid} {signalStrength}%",
-    "format-ethernet": "{ipaddr}",
-    "format-disconnected": "disconnected",
-    "interval": 10,
-    "tooltip": false
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "󰤭",
+    "on-click": "nm-connection-editor",
+    "tooltip-format": "{essid} {signalStrength}%",
+    "tooltip": true
   },
 
   "pulseaudio": {
-    "format": "VOL {volume}%",
-    "format-muted": "MUTED",
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
     "on-click": "pavucontrol",
-    "tooltip": false,
-    "signal": 8
+    "tooltip": false
   },
 
   "battery": {
-    "format": "BAT {capacity}%",
-    "format-charging": "BAT {capacity}% +",
-    "format-full": "BAT full",
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "interval": 30,
     "tooltip": false
   },
 
   "clock": {
-    "format": "{:%a %b %d  %H:%M:%S}",
-    "interval": 1,
+    "format": " {:%a %d %b  %H:%M}",
+    "interval": 60,
+    "on-click": "",
     "tooltip": false
   }
 }

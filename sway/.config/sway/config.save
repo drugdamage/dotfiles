@@ -37,7 +37,7 @@ output eDP-1 resolution 1920x1080@144Hz position 0,0 scale 1
 output HDMI-A-1 resolution 1920x1080@60Hz position 1920,0 scale 1
 
 # ── Wallpaper — solid black ──────────────────────────────────
-output * bg ~/Pictures/wallpapers/desert-macos-mojave-stock-night-rocks.jpg fill
+output * bg ~/Pictures/wallpapers/.jpg fill
 
 # ── Workspace assignment ─────────────────────────────────────
 set $ws1 "1"
