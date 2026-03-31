@@ -1,0 +1,130 @@
+/* SwayNC — Catppuccin Mocha */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+}
+
+.control-center {
+  background: rgba(30, 30, 46, 0.92);
+  border-radius: 12px;
+  border: 1px solid rgba(203, 166, 247, 0.15);
+  padding: 8px;
+  color: #cdd6f4;
+}
+
+.notification-row {
+  outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  opacity: 1;
+}
+
+.notification {
+  background: rgba(49, 50, 68, 0.95);
+  border-radius: 10px;
+  margin: 4px 0;
+  padding: 10px;
+  border: 1px solid rgba(203, 166, 247, 0.1);
+}
+
+.notification-content {
+  background: transparent;
+  padding: 4px;
+}
+
+.close-button {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+  border-radius: 50%;
+  border: none;
+  margin: 4px;
+}
+
+.close-button:hover {
+  background: #f38ba8;
+  color: #1e1e2e;
+}
+
+.notification-default-action,
+.notification-action {
+  background: rgba(69, 71, 90, 0.6);
+  border: none;
+  border-radius: 8px;
+  color: #cdd6f4;
+  padding: 4px 12px;
+  margin: 2px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  background: rgba(203, 166, 247, 0.2);
+}
+
+.notification-label {
+  color: #cdd6f4;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notification-body {
+  color: #a6adc8;
+  font-size: 12px;
+}
+
+.notification-summary {
+  color: #cdd6f4;
+  font-weight: 600;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+/* Title bar */
+.widget-title {
+  color: #cdd6f4;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 4px;
+}
+
+.widget-title > button {
+  background: rgba(203, 166, 247, 0.15);
+  border: none;
+  border-radius: 8px;
+  color: #cba6f7;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.widget-title > button:hover {
+  background: rgba(203, 166, 247, 0.3);
+}
+
+/* DND toggle */
+.widget-dnd {
+  color: #cdd6f4;
+  padding: 4px;
+}
+
+.widget-dnd > switch {
+  border-radius: 12px;
+  background: rgba(69, 71, 90, 0.8);
+  border: none;
+}
+
+.widget-dnd > switch:checked {
+  background: #cba6f7;
+}
+
+.widget-dnd > switch slider {
+  background: #cdd6f4;
+  border-radius: 50%;
+}

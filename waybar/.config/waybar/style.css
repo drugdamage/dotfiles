@@ -1,3 +1,14 @@
+@define-color base     #1e1e2e;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color overlay0 #6c7086;
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color mauve    #cba6f7;
+@define-color red      #f38ba8;
+@define-color yellow   #f9e2af;
+@define-color green    #a6e3a1;
+
 * {
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 13px;
@@ -9,52 +20,66 @@
 }
 
 window#waybar {
-  background-color: transparent;
-  color: #ffffff;
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+  background-color: @base;
+  color: @text;
 }
 
 #workspaces {
-  padding: 0 8px;
+  padding: 0 4px;
 }
 
 #workspaces button {
-  all: unset;
-  padding: 0 8px;
-  color: rgba(255, 255, 255, 0.35);
-  transition: all 0.1s ease;
-}
-
-#workspaces button.focused {
-  color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 0 10px;
+  color: @overlay0;
+  background: transparent;
+  border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: @text;
+  background: @surface0;
+}
+
+#workspaces button.focused {
+  color: @mauve;
+  border-bottom: 2px solid @mauve;
+}
+
+#workspaces button.urgent {
+  color: @red;
+  border-bottom: 2px solid @red;
+}
+
+#mode {
+  color: @yellow;
+  padding: 0 8px;
 }
 
 #mpris {
-  color: rgba(255, 255, 255, 0.75);
+  color: @subtext0;
+  padding: 0 16px;
   font-style: italic;
-  padding: 0 12px;
 }
 
 #network,
+#cpu,
+#temperature,
+#memory,
 #pulseaudio,
 #battery,
 #clock {
-  color: #ffffff;
-  padding: 0 14px;
+  color: @text;
+  padding: 0 16px;
 }
+
+#temperature.critical { color: @red; }
+#battery.warning      { color: @yellow; }
+#battery.critical     { color: @red; }
+#battery.charging     { color: @green; }
+#pulseaudio.muted     { color: @overlay0; }
 
 #clock {
-  color: #ffffff;
-  font-weight: 600;
+  color: @mauve;
+  font-weight: bold;
   padding-right: 16px;
 }
-
-#battery.warning  { color: #f9e2af; }
-#battery.critical { color: #f38ba8; }
-#battery.charging { color: #a6e3a1; }
-#pulseaudio.muted { color: rgba(255, 255, 255, 0.3); }

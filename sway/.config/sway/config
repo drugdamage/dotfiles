@@ -37,7 +37,7 @@ output eDP-1 resolution 1920x1080@144Hz position 0,0 scale 1
 output HDMI-A-1 resolution 1920x1080@60Hz position 1920,0 scale 1
 
 # ── Wallpaper — solid black ──────────────────────────────────
-output * bg ~/Pictures/wallpapers/desert-macos-mojave-stock-night-rocks.jpg fill
+output * bg #000000 solid_color
 
 # ── Workspace assignment ─────────────────────────────────────
 set $ws1 "1"
@@ -200,7 +200,7 @@ exec swayidle -w \
     before-sleep 'swaylock -c 000000'
 
 # ── Autostart ────────────────────────────────────────────────
-exec ~/.config/waybar/launch.sh
+exec_always ~/.config/waybar/launch.sh
 exec_always ~/.config/scripts/import-gsettings.sh
 
 exec vicinae server
