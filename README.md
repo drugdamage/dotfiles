@@ -1,6 +1,6 @@
 # dotfiles
 
-![demo](demo.gif)
+![demo](demo.png)
 
 ---
 
