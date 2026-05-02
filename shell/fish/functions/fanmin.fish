@@ -1,0 +1,3 @@
+function fanmin --wraps='sudo python3 -c "with open(\\"/sys/kernel/debug/ec/ec0/io\\", \\"r+b\\") as f: f.seek(0x98); f.write(bytes([0x00])); f.seek(0xC9); f.write(bytes([0x01])); f.seek(0xCE); f.write(bytes([0x01]))"' --description 'alias fanmin=sudo python3 -c "with open(\\"/sys/kernel/debug/ec/ec0/io\\", \\"r+b\\") as f: f.seek(0x98); f.write(bytes([0x00])); f.seek(0xC9); f.write(bytes([0x01])); f.seek(0xCE); f.write(bytes([0x01]))"'
+    sudo python3 -c "with open(\"/sys/kernel/debug/ec/ec0/io\", \"r+b\") as f: f.seek(0x98); f.write(bytes([0x00])); f.seek(0xC9); f.write(bytes([0x01])); f.seek(0xCE); f.write(bytes([0x01]))" $argv
+end

@@ -1,0 +1,3 @@
+function fanoff --wraps='sudo python3 -c "with open(\\"/sys/kernel/debug/ec/ec0/io\\", \\"r+b\\") as f: f.seek(0x98); f.write(bytes([0x00]))"' --wraps='sudo python3 -c "with open(\\"/sys/kernel/debug/ec/ec0/io\\", \\"r+b\\") as f: f.seek(0x98); f.write(bytes([0x00])); f.seek(0xC9); f.write(bytes([0x00])); f.seek(0xCE); f.write(bytes([0x00]))"' --description 'alias fanoff=sudo python3 -c "with open(\\"/sys/kernel/debug/ec/ec0/io\\", \\"r+b\\") as f: f.seek(0x98); f.write(bytes([0x00]))"'
+    sudo python3 -c "with open(\"/sys/kernel/debug/ec/ec0/io\", \"r+b\") as f: f.seek(0x98); f.write(bytes([0x00]))" $argv
+end

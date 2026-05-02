@@ -1,0 +1,5 @@
+alias vpnon='sudo systemctl start awg-quick@wg0.service'
+alias vpnoff='sudo systemctl stop awg-quick@wg0.service'
+alias vpnrestart='sudo systemctl restart awg-quick@wg0.service'
+alias vpnstatus='systemctl status awg-quick@wg0.service --no-pager -l'
+alias vpnip='curl ifconfig.me; echo'

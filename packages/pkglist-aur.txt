@@ -1,0 +1,6 @@
+amneziawg-go
+apple-fonts
+claude-desktop-appimage
+nbfc-linux
+spotify
+vicinae-bin

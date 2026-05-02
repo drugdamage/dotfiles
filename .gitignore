@@ -1,0 +1,34 @@
+# SSH
+.ssh/
+**/.ssh/
+id_rsa
+id_ed25519
+*.pem
+*.key
+known_hosts
+authorized_keys
+
+# Secrets / env
+.env
+.env.*
+*.secret
+secrets/
+
+# Shell history
+.bash_history
+.zsh_history
+shell/fish/fish_history
+**/*_history
+
+# Editor temp files
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+.vscode/
+*.orig
+
+# GPG
+secring.*
+*.gpg
