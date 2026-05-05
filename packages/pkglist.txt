@@ -46,7 +46,6 @@ cryptsetup
 decibels
 device-mapper
 diffutils
-discord
 dmidecode
 dmraid
 dnsmasq
