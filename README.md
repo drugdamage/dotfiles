@@ -1,5 +1,8 @@
 # dotfiles
 
+My CachyOS setup, all sorted and backed up so a fresh install doesn't
+mean starting from scratch every time.
+
 ![demo](demo.png)
 
 ---
@@ -42,7 +45,7 @@ dotfiles/
 
 ## Backup
 
-Run on any existing install to snapshot the current state:
+Run on any existing install to grab a snapshot of the current state:
 
 ```sh
 git clone <repo-url> ~/dotfiles
