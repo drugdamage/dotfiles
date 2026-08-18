@@ -1,7 +1,7 @@
 # dotfiles
 
-My CachyOS setup, all sorted and backed up so a fresh install doesn't
-mean starting from scratch every time.
+My CachyOS setup, backed up so a fresh install doesn't mean starting
+from scratch every time.
 
 ![demo](demo.png)
 
