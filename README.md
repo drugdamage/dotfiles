@@ -3,6 +3,9 @@
 My CachyOS setup, backed up so a fresh install doesn't mean starting
 from scratch every time.
 
+> **Not maintained.** Old project, not updated since switching to
+> macOS. Config still works, no plans to continue it.
+
 ![demo](demo.png)
 
 ---
