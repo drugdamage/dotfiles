@@ -45,7 +45,7 @@ dotfiles/
 
 ## Backup
 
-Run on any existing install to grab a snapshot of the current state:
+Snapshot the current system state:
 
 ```sh
 git clone <repo-url> ~/dotfiles
