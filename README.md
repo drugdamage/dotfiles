@@ -1,84 +1,17 @@
 # dotfiles
 
-My CachyOS setup, backed up so a fresh install doesn't mean starting
-from scratch every time.
+CachyOS dotfiles for GNOME, Kitty, and Fish, with package lists and backup scripts. Archived.
 
-> **Not maintained.** Old project, not updated since switching to
-> macOS. Config still works, no plans to continue it.
+![Desktop](demo.png)
 
-![demo](demo.png)
-
----
-
-## System
-
-| | |
-|---|---|
-| **OS** | CachyOS (Arch-based) |
-| **WM / DE** | GNOME |
-| **Terminal** | Kitty |
-| **Shell** | Fish |
-| **AUR helper** | paru |
-
----
-
-## Contents
-
-```
-dotfiles/
-├── backup.sh          collect configs from the running system
-├── restore.sh         rebuild the system on a fresh install
-├── gnome/
-│   ├── dconf-gnome.ini   dconf dump /org/gnome/
-│   └── dconf-gtk.ini     dconf dump /org/gtk/
-├── kitty/             ~/.config/kitty/
-├── shell/
-│   ├── fish/          ~/.config/fish/
-│   ├── .bashrc
-│   ├── .zshrc
-│   └── starship.toml
-├── wallpapers/        active desktop wallpaper(s)
-└── packages/
-    ├── pkglist.txt       explicit pacman packages
-    ├── pkglist-aur.txt   AUR packages
-    └── flatpak.txt       Flatpak app IDs
-```
-
----
-
-## Backup
-
-Snapshot the current system state:
+## Use
 
 ```sh
-git clone <repo-url> ~/dotfiles
+git clone https://github.com/drugdamage/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./backup.sh
-git add -A && git commit -m "snapshot $(date +%Y-%m-%d)"
-git push
 ```
 
----
+- `./backup.sh` saves the current settings and package lists to this folder.
+- `./restore.sh` installs packages and restores shell, terminal, wallpaper, and GNOME settings on CachyOS.
 
-## Restore (fresh CachyOS install)
-
-```sh
-# 1. clone
-git clone <repo-url> ~/dotfiles
-cd ~/dotfiles
-
-# 2. run — installs paru, packages, and restores all configs
-./restore.sh
-
-# 3. reboot
-sudo reboot
-```
-
-`restore.sh` will:
-1. Install **paru** from the AUR if missing
-2. Restore all pacman + AUR packages from `packages/pkglist.txt`
-3. Install Flatpak apps listed in `packages/flatpak.txt`
-4. Place fish, bash, and zsh configs in the correct locations
-5. Copy kitty config to `~/.config/kitty/`
-6. Copy the wallpaper and set it via dconf
-7. Load GNOME and GTK settings from the dconf dumps
+Run as your normal user; restore uses `sudo` when needed. It overwrites matching settings, so back up your current configuration first. Reboot after restoring.
